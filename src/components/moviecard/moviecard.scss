@@ -1,0 +1,40 @@
+@use '../../scss/'  as * ;
+.movie-card {
+     padding: 60% 0;
+     border-radius: $border-radius;
+     position: relative;
+     background-size: cover;
+     background-repeat: no-repeat;
+     @include flex(center,center);
+     &--btn {
+          opacity: 0;
+          transform: scale(0);
+          transition: transform .4s ease, opacity .4s ease;
+          backface-visibility: visible;
+
+     }
+     &--title {
+          margin-top: 1rem;
+     }
+     &::before {
+          content: "";
+          position: absolute;
+          top:0;
+          left: 0;
+          @include overlay();
+          height: 100%;
+          width:100%;
+          opacity: 0;
+          
+          transition: opacity .5s ease;
+     }
+     @media (hover: hover) and (pointer: fine){
+          &:hover &--btn{
+               opacity: 1;
+               transform: scale(1);
+          }
+          &:hover::before {
+               opacity: 1;
+          }
+     }
+}

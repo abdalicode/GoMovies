@@ -1,0 +1,94 @@
+@use "../../scss/" as *;
+.movie-detail {
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: top;
+   &__overlay {
+      @include overlay();
+      position: relative;
+      &::before {
+         content: "";
+         position: absolute;
+         left: 0;
+         bottom: 0;
+         height: 150px;
+         width: 100%;
+         background: linear-gradient(to bottom, transparent, rgba($black, 0.5), rgba($black, 0.9));
+      }
+   }
+   &__container {
+      width: 100%;
+      padding: 10rem 2rem 10rem 2rem;
+      @include flex(flex-start, flex-start);
+   }
+   &__poster {
+      flex: 1;
+      & > img {
+         border-radius: $border-radius;
+      }
+      margin-right: 2rem;
+   }
+   &__info {
+      flex: 2;
+      @include flex(flex-start, flex-start);
+      flex-direction: column;
+   }
+   &__title {
+      font-size: 4.2rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 1.5rem;
+   }
+   &__genres {
+      margin-bottom: 3rem;
+      & > span {
+         font-size: 0.8rem;
+         display: inline-block;
+         padding: 0.3rem 1rem;
+         border-radius: $border-radius;
+         border: 2px solid $white;
+         &:not(:last-child) {
+            margin-right: 0.5rem;
+         }
+      }
+   }
+   &__overview {
+      font-weight: 500;
+   }
+   .casts {
+      @include flex(flex-start, flex-start);
+      flex-wrap: wrap;
+      &__item {
+         height: auto;
+         @include flex(center, center);
+         flex-direction: column;
+         width: 5rem;
+         &__img {
+            border-radius: 3px;
+            transition: transform 0.3s ease;
+            @media (hover: hover) and (pointer: fine) {
+               &:hover {
+                  transform: scale(1.05);
+               }
+            }
+         }
+         &__name {
+            width: 100%;
+            font-size: 0.8rem;
+            margin-top: 0.4rem;
+         }
+         &:not(:last-child) {
+            margin-right: 1rem;
+         }
+      }
+   }
+   @include mobile {
+      &__poster {
+         display: none;
+      }
+      &__info {
+         @include flex(center , center);
+         flex-direction: column;
+      }
+   }
+}

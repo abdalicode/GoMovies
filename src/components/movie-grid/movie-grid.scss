@@ -1,0 +1,21 @@
+@use '../../scss/' as *;
+.search-form {
+     & > button {
+          margin-left: 1.5rem;
+     }
+}
+
+.movie-grid {
+     display: grid;
+     grid-template-columns: repeat(auto-fill ,  minmax(150px ,  1fr)) ;
+     grid-gap: 20px;
+     gap: 20px;
+     @include mobile {
+          & .movie-grid > h3 {
+               font-size: 1.9rem;
+          }
+     }
+}
+.show-more {
+     @include flex(center , center)
+}

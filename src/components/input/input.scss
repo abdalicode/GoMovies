@@ -1,0 +1,10 @@
+@use '../../scss/' as *;
+
+.input {
+     background-color: $body-bg;
+     border-radius: $border-radius;
+     color: rgba($white , .8);
+     border:none;
+     padding : 1rem 2rem;
+     background-color: rgb(31, 31, 31);
+}

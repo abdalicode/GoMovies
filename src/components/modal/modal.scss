@@ -1,0 +1,60 @@
+@use "../../scss/" as *;
+
+.modal {
+   &-transition {
+      &-enter {
+         transform: translateY(-400px);
+         opacity: 0;
+      }
+      &-enter-active {
+         transform: translateY(0);
+         opacity: 1;
+         transition: transform 0.4s ease, opacity 0.4s ease;
+      }
+      &-exit {
+         transform: translateY(0);
+         opacity: 1;
+      }
+      &-exit-active {
+         transform: translateY(-400px);
+         opacity: 0;
+         transition: transform 0.4s ease, opacity 0.4s ease;
+      }
+   }
+   width: 100%;
+   height: 100%;
+   position: fixed;
+   z-index: 100;
+   top: 0;
+   left: 0;
+   @include overlay();
+   backdrop-filter: blur(1px);
+   @include flex(center, center);
+   &__content {
+      background: black;
+      flex: 1;
+      padding: 2rem;
+      & iframe {
+         height: calc(100vw * 4 / 11);
+      }
+   }
+   &__close {
+      position: absolute;
+      top: 7rem;
+      left: 3rem;
+      color: rgba($main-color , .7);
+      cursor: pointer;
+      transition: color 0.3s ease;
+      & > svg {
+         font-size: 3rem;
+      }
+      @media (hover: hover) {
+         &:hover {
+            color: rgba($main-color, 0.5);
+         }
+      }
+      @include mobile{
+         top: 35%;
+      }
+   }
+}
